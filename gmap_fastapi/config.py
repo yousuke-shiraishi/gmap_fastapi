@@ -5,11 +5,11 @@ from dynaconf import Dynaconf
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 settings = Dynaconf(
-    envvar_prefix="project_name",
+    envvar_prefix="gmap_fastapi",
     preload=[os.path.join(HERE, "default.toml")],
     settings_files=["settings.toml", ".secrets.toml"],
     environments=["development", "production", "testing"],
-    env_switcher="project_name_env",
+    env_switcher="gmap_fastapi_env",
     load_dotenv=False,
 )
 
@@ -18,7 +18,7 @@ settings = Dynaconf(
 # How to use this application settings
 
 ```
-from project_name.config import settings
+from gmap_fastapi.config import settings
 ```
 
 ## Acessing variables
@@ -45,15 +45,15 @@ KEY=value
 
 ### As environment variables
 ```
-export PROJECT_NAME_KEY=value
-export PROJECT_NAME_KEY="@int 42"
-export PROJECT_NAME_KEY="@jinja {{ this.db.uri }}"
-export PROJECT_NAME_DB__uri="@jinja {{ this.db.uri | replace('db', 'data') }}"
+export gmap_fastapi_KEY=value
+export gmap_fastapi_KEY="@int 42"
+export gmap_fastapi_KEY="@jinja {{ this.db.uri }}"
+export gmap_fastapi_DB__uri="@jinja {{ this.db.uri | replace('db', 'data') }}"
 ```
 
 ### Switching environments
 ```
-PROJECT_NAME_ENV=production project_name run
+gmap_fastapi_ENV=production gmap_fastapi run
 ```
 
 Read more on https://dynaconf.com
